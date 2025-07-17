@@ -75,5 +75,3 @@ Pipeline được thiết kế tinh gọn với một stage và một job duy nh
 3.  **Cấu hình Biến Môi trường:**
       * Vào **Settings \> CI/CD \> Variables**, thêm các biến sau: `AWS_REGION`, `TARGET_INSTANCE_IDS`, `SSM_DOCUMENT_NAME`.
 
-## **6. Bắt đầu cho Lập trình viên mới**
-
