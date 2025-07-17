@@ -6,8 +6,7 @@ Import-Module -Name MsrcSecurityUpdates -Force
 $osver = Get-ComputerInfo | Select-Object OSName
 if($osver -match "server"){
     $fullos = $matches[0]
-}
-else{
+}else{
     $osver = $osver -replace '\D+'
     $osyear = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").DisplayVersion
     $fullos = "Windows " + $osver + " Version " + $osyear + " for x64-based Systems"
@@ -15,6 +14,7 @@ else{
 
 $date = Get-Date -UFormat "%Y-%b"
 
+Remove-Item -LiteralPath "C:\temp" -Force -Recurse
 mkdir c:\temp\reports
 $cvrfDoc = Get-MsrcCvrfDocument -ID $date -Verbose
 $cvrfDoc | Get-MsrcSecurityBulletinHtml -Verbose | Out-File c:\temp\reports\"MSRC$($date)SecurityUpdates.html"
