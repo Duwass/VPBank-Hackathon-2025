@@ -30,9 +30,9 @@ $uri = [System.Uri]$url
 $kbver = [System.Web.HttpUtility]::ParseQueryString($uri.Query).Get("q")
 mkdir C:\temp\logs
 
-Install-KbUpdate -HotfixId $kbver -ComputerName $env:computername | Out-File C:\tmp\logs\"log_update_$kbver.txt"
+Install-KbUpdate -HotfixId $kbver -ComputerName $env:computername | Out-File C:\temp\logs\"log_update_$kbver.txt"
 
-Get-KbNeededUpdate -ComputerName $env:computername | Install-KbUpdate |Out-File C:\tmp\logs\"log_update_needed.txt"
+Get-KbNeededUpdate -ComputerName $env:computername | Install-KbUpdate |Out-File C:\temp\logs\"log_update_needed.txt"
 
 Get-WindowsUpdateLog -LogPath C:\temp\logs\WindowsUpdate.log
 
