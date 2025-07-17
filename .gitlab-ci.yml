@@ -1,0 +1,15 @@
+stages:
+  - deploy
+
+trigger_patching_on_targets:
+  stage: deploy
+  tags:
+    - windows # Yêu cầu chạy trên Runner Windows bạn đã cấu hình trên AWS
+  script:
+    - echo "Issuing command to all target instances to run self-patching script..."
+    - |
+      aws ssm send-command `
+        --document-name "$SSM_DOCUMENT_NAME" `
+        --instance-ids $TARGET_INSTANCE_IDS `
+        --region $AWS_REGION
+    - echo "Command sent successfully via AWS Systems Manager."
