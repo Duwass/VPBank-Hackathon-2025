@@ -1,5 +1,5 @@
 #Install-Module -Name MsrcSecurityUpdates -Force
-#Install-Module -Name kbupdate
+#Install-Module -Name kbupdate -Force
 Import-Module -Name kbupdate -Force
 Import-Module -Name MsrcSecurityUpdates -Force
 
